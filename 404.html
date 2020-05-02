@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AK IOI is our dream</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://ak-ioi-is-our-dream.github.io/css/bootstrap.min.css">
+<!-- Google Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700' rel='stylesheet' type='text/css'>
+<!-- Font Awesome -->
+<link href='https://ak-ioi-is-our-dream.github.io/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+<!-- Style -->
+<link href='https://ak-ioi-is-our-dream.github.io/style.css' rel='stylesheet' type='text/css'>
+<!-- Markdown css -->
+<link href='https://ak-ioi-is-our-dream.github.io/article/vue.css' rel='stylesheet' type='text/css'>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<a class="navbar-brand" href="https://ak-ioi-is-our-dream.github.io/">AK IOI is our dream</a>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://ak-ioi-is-our-dream.github.io/">Home</a></li>
+				<li><a href="https://ak-ioi-is-our-dream.github.io/article/">文章栏</a></li>
+				<li><a href="https://ak-ioi-is-our-dream.github.io/article/tuan-dui-gui-ze/">团队规则</a></li>
+				<li><a href="https://ak-ioi-is-our-dream.github.io/article/guan-wang-li-shi/">官网历史</a></li>
+				<!--
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+					</ul>
+				</li>
+				-->
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div>
+</nav>
+
+<!-- START SECTION -->
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h1 id="biaoti" class="section-title">文章生成中...</h1>
+			</div>
+      <div id="resText"><center><h3>请稍后&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3></center></div>
+		</div>
+	</div>
+</div>
+<!--/.section -->
+<script type="text/javascript" >
+  
+  function ajax() {
+      var xmlHttp = null;
+      if (window.ActiveXObject) {
+          xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+      } else if (window.XMLHttpRequest) {
+          xmlHttp = new XMLHttpRequest();
+      }
+      if (xmlHttp != null) {
+          xmlHttp.open("get", window.document.location.href+"main.md", true);
+          xmlHttp.send();
+          xmlHttp.onreadystatechange = doResult;                
+      }
+      function doResult() {
+          if (xmlHttp.readyState == 4) { //4表示执行完成
+              if (xmlHttp.status == 200) { //200表示执行成功
+                  var xxx=xmlHttp.responseText;
+		              xxx=marked(xxx);
+                  document.getElementById("biaoti").innerHTML = "文章";
+                  document.getElementById("resText").innerHTML = xxx;
+              }
+							else
+							{
+                  document.getElementById("biaoti").innerHTML = "404";
+                  document.getElementById("resText").innerHTML = 
+									    "<center><h3>找不到文章，请检查路径是否正确。</h3></center>";
+							}
+          }
+					else
+					{
+              document.getElementById("biaoti").innerHTML = "404";
+              document.getElementById("resText").innerHTML = 
+							    "<center><h3>找不到文章，请检查路径是否正确。</h3></center>";
+					}
+      }
+			setTimeout('ajax()',60000);
+  }
+  ajax();
+</script>
+<!-- START SECTION -->
+<div class="section background-dark dark-bg">
+	<div class="container">
+		<div class="row">
+			<!--
+			<div class="col-md-3">
+				<h3 class="text-uppercase font-size-md letter-spacing-md font-weight-lg "></h3>
+			</div>
+			<div class="col-md-12 margin-top-md margin-bottom-md" style="opacity: .2;">
+				<hr/>
+			</div>
+			-->
+			<div class="col-md-12 margin-top-md text-center font-size-sm text-upercase">
+				<p>©2020 AK IOI is our dream 团队 版权所有 | 由<a href="https://www.luogu.com.cn/user/257601">jyb666</a>进行维护</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/.section -->
+
+<!-- jQuery -->
+<script src="https://ak-ioi-is-our-dream.github.io/js/jquery.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="https://ak-ioi-is-our-dream.github.io/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</body>
+</html>
